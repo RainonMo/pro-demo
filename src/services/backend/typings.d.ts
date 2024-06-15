@@ -44,6 +44,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseJSONObject_ = {
+    code?: number;
+    data?: Record<string, any>;
+    message?: string;
+  };
+
   type BaseResponseListString_ = {
     code?: number;
     data?: string[];
@@ -138,12 +144,14 @@ declare namespace API {
     chartData?: string;
     chartType?: string;
     createTime?: string;
+    execMessage?: string;
     genChart?: string;
     genResult?: string;
     goal?: string;
     id?: number;
     isDelete?: number;
     name?: string;
+    status?: string;
     updateTime?: string;
     userId?: number;
   };
@@ -191,8 +199,22 @@ declare namespace API {
     timestamp?: string;
   };
 
+  type ComparatorString_ = true;
+
   type DeleteRequest = {
     id?: number;
+  };
+
+  type genChartByAiAsyncMqUsingPOSTParams = {
+    chartType?: string;
+    goal?: string;
+    name?: string;
+  };
+
+  type genChartByAiAsyncUsingPOSTParams = {
+    chartType?: string;
+    goal?: string;
+    name?: string;
   };
 
   type genChartByAiUsingPOST1Params = {
@@ -235,6 +257,20 @@ declare namespace API {
     /** id */
     id?: number;
   };
+
+  type JSONConfig = {
+    checkDuplicate?: boolean;
+    dateFormat?: string;
+    ignoreCase?: boolean;
+    ignoreError?: boolean;
+    ignoreNullValue?: boolean;
+    keyComparator?: ComparatorString_;
+    order?: boolean;
+    stripTrailingZeros?: boolean;
+    transientSupport?: boolean;
+  };
+
+  type JSONObject = true;
 
   type LoginUserVO = {
     createTime?: string;
@@ -408,6 +444,13 @@ declare namespace API {
     updateTime?: string;
     user?: UserVO;
     userId?: number;
+  };
+
+  type StoreQueryRequest = {
+    cids?: string;
+    pageId?: string;
+    pageSize?: string;
+    priceCid?: string;
   };
 
   type TArticle = {
