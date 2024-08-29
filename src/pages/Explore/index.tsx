@@ -49,9 +49,9 @@ const Explore: React.FC = ()  => {
   };
 
   return (
-    <div className="add-chart">
+    <div>
       <Row gutter={24}>
-        <Col span={12}>
+        <Col  xs={24} sm={24} md={24} lg={12} xl={12}>
           <Card title="智能分析">
             <Form name="addChart" labelAlign="left" labelCol={{ span: 4 }}
                   wrapperCol={{ span: 16 }} onFinish={onFinish} initialValues={{}}>
@@ -93,7 +93,7 @@ const Explore: React.FC = ()  => {
             </Form>
           </Card>
         </Col>
-        <Col span={12}>
+        <Col  xs={24} sm={24} md={24} lg={12} xl={12} >
           <Card title="分析结论">
             {/*{chart?.genResult ?? <div>请先在左侧进行提交</div>}*/}
             <div>请先在左侧进行提交</div>

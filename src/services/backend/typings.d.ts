@@ -68,9 +68,27 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseNavVO_ = {
+    code?: number;
+    data?: NavVO;
+    message?: string;
+  };
+
   type BaseResponsePageChart_ = {
     code?: number;
     data?: PageChart_;
+    message?: string;
+  };
+
+  type BaseResponsePageNav_ = {
+    code?: number;
+    data?: PageNav_;
+    message?: string;
+  };
+
+  type BaseResponsePageNavVO_ = {
+    code?: number;
+    data?: PageNavVO_;
     message?: string;
   };
 
@@ -233,6 +251,11 @@ declare namespace API {
     id?: number;
   };
 
+  type getNavVOByIdUsingGETParams = {
+    /** id */
+    id?: number;
+  };
+
   type getPostVOByIdUsingGETParams = {
     /** id */
     id?: number;
@@ -282,6 +305,72 @@ declare namespace API {
     userRole?: string;
   };
 
+  type Nav = {
+    category?: string;
+    createTime?: string;
+    icon?: string;
+    id?: number;
+    isDelete?: number;
+    name?: string;
+    profile?: string;
+    updateTime?: string;
+    url?: string;
+    userId?: number;
+  };
+
+  type NavAddRequest = {
+    category?: string;
+    icon?: string;
+    name?: string;
+    profile?: string;
+    url?: string;
+  };
+
+  type NavEditRequest = {
+    category?: string;
+    icon?: string;
+    id?: number;
+    name?: string;
+    profile?: string;
+    url?: string;
+  };
+
+  type NavQueryRequest = {
+    category?: string;
+    current?: number;
+    icon?: string;
+    id?: number;
+    name?: string;
+    pageSize?: number;
+    profile?: string;
+    sortField?: string;
+    sortOrder?: string;
+    url?: string;
+    userId?: number;
+  };
+
+  type NavUpdateRequest = {
+    category?: string;
+    icon?: string;
+    id?: number;
+    name?: string;
+    profile?: string;
+    url?: string;
+  };
+
+  type NavVO = {
+    category?: string;
+    createTime?: string;
+    icon?: string;
+    id?: number;
+    name?: string;
+    profile?: string;
+    updateTime?: string;
+    url?: string;
+    user?: UserVO;
+    userId?: number;
+  };
+
   type OrderItem = {
     asc?: boolean;
     column?: string;
@@ -295,6 +384,32 @@ declare namespace API {
     orders?: OrderItem[];
     pages?: number;
     records?: Chart[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageNav_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: Nav[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
+  type PageNavVO_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: NavVO[];
     searchCount?: boolean;
     size?: number;
     total?: number;

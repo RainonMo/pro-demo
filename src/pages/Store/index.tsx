@@ -50,22 +50,34 @@ const Store: React.FC = () => {
   }, [curTab]);
 
   return (
-    <div>
+     <div>
       <List
-        grid={{ gutter: 16, column: 4 }}
+        grid={{
+          gutter: 16,
+          xs: 1,
+          sm: 1,
+          md: 2,
+          lg: 3,
+          xl: 4,
+          xxl: 4,
+        }}
         dataSource={list}
         renderItem={(item) => (
           <List.Item>
             <Card
               hoverable
-              style={{ width: '100%' }}
-              cover={<img alt={item.desc} src={item.mainPic} />}
+              className="bg-white shadow-md rounded-lg overflow-hidden"
+              cover={<img className="w-full h-48 object-cover" src={item.mainPic} alt={item.desc}  />}
             >
-              <Meta title={item.dtitle} description={item.specialText} />
-              <p>原价：{item.originalPrice}</p>
-              <p>券后价：{item.actualPrice}</p>
-              <p>今日销量：{item.dailySales}</p>
-              <Button type="primary" className="float-button" href={item.couponLink} target="_blank" >立即领券</Button>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">{item.dtitle} </h3>
+                <p className="text-green-600 font-bold mb-2">{item.specialText}</p>
+                <div className="flex items-center mb-4">
+                  <span className="text-gray-400 line-through mr-2">原价：{item.originalPrice}</span>
+                  <span className="text-red-600 font-bold">特价：{item.actualPrice}</span>
+                </div>
+                <Button type="primary" className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"  href={item.couponLink} target="_blank">点击购买</Button>
+              </div>
             </Card>
           </List.Item>
         )}

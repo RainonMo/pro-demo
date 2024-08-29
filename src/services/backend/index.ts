@@ -5,6 +5,7 @@
 import * as blogController from './blogController';
 import * as chartController from './chartController';
 import * as fileController from './fileController';
+import * as navController from './navController';
 import * as postController from './postController';
 import * as postFavourController from './postFavourController';
 import * as postThumbController from './postThumbController';
@@ -16,6 +17,7 @@ export default {
   blogController,
   chartController,
   fileController,
+  navController,
   postController,
   postFavourController,
   postThumbController,

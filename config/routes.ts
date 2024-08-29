@@ -23,6 +23,7 @@ export default [
     routes: [
       { path: '/admin', redirect: '/admin/user' },
       { path: '/admin/user',  icon: 'table',component: './Admin/User', name: "用户管理" },
+      { path: '/admin/nav',  icon: 'table',component: './Admin/Nav', name: "导航管理" },
     ],
   },
   { path: '*', layout: false, component: './404' },
