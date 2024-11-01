@@ -4,7 +4,7 @@ export default [
 
   { path: '/', icon: 'home', component:'./Home',name:'首页' },
   { path: '/blog', icon: 'read', component: './Blog', name: "博客"},
-  { path: '/blog/add', component:'./Home',hideInMenu: true,name: '创建文章'},
+  // { path: '/blog/add', component:'./Home',hideInMenu: true,name: '创建文章'},
   { path: '/blog/:id', component: './Home', hideInMenu: true, name: '文章详情页' },
   { path: '/store', icon: 'shopping', component: './Store', name: "商城" },
   { path: '/bi',
@@ -24,6 +24,8 @@ export default [
       { path: '/admin', redirect: '/admin/user' },
       { path: '/admin/user',  icon: 'table',component: './Admin/User', name: "用户管理" },
       { path: '/admin/nav',  icon: 'table',component: './Admin/Nav', name: "导航管理" },
+      { path: '/admin/blog/category',  icon: 'table',component: './Admin/Category', name: "博客-分类管理"},
+      { path: '/admin/blog/article',  icon: 'table',component: './Admin/Article', name: "博客-文章管理"}
     ],
   },
   { path: '*', layout: false, component: './404' },

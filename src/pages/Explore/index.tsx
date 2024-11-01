@@ -95,8 +95,8 @@ const Explore: React.FC = ()  => {
         </Col>
         <Col  xs={24} sm={24} md={24} lg={12} xl={12} >
           <Card title="分析结论">
-            {/*{chart?.genResult ?? <div>请先在左侧进行提交</div>}*/}
-            <div>请先在左侧进行提交</div>
+            {chart? <div>{chart.genResult}</div> :<div>请先在左侧进行提交</div>}
+            {/*<div>请先在左侧进行提交</div>*/}
             <Spin spinning={submitting}/>
           </Card>
           <Divider />

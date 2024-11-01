@@ -1,12 +1,13 @@
 declare namespace API {
   type ArticleVO = {
     categoryId?: number;
+    categoryName?: string;
     content?: string;
     create_time?: string;
     description?: string;
     favourNum?: number;
     id?: number;
-    read_num?: Record<string, any>;
+    read_num?: number;
     thumbNum?: number;
     title?: string;
     title_image?: string;
@@ -107,6 +108,12 @@ declare namespace API {
   type BaseResponsePageTArticle_ = {
     code?: number;
     data?: PageTArticle_;
+    message?: string;
+  };
+
+  type BaseResponsePageTCategory_ = {
+    code?: number;
+    data?: PageTCategory_;
     message?: string;
   };
 
@@ -454,6 +461,19 @@ declare namespace API {
     total?: number;
   };
 
+  type PageTCategory_ = {
+    countId?: string;
+    current?: number;
+    maxLimit?: number;
+    optimizeCountSql?: boolean;
+    orders?: OrderItem[];
+    pages?: number;
+    records?: TCategory[];
+    searchCount?: boolean;
+    size?: number;
+    total?: number;
+  };
+
   type PageUser_ = {
     countId?: string;
     current?: number;
@@ -677,6 +697,7 @@ declare namespace API {
     sortField?: string;
     sortOrder?: string;
     unionId?: string;
+    userAccount?: string;
     userName?: string;
     userProfile?: string;
     userRole?: string;

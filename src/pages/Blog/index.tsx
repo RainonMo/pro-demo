@@ -15,31 +15,38 @@ const Blog: React.FC = () => {
     const [list, setList] = useState<API.TArticle[]>([]);
     // 总数
     const [total, setTotal] = useState<number>(0);
+    const loadButtonData = async () => {
+      try {
+        const buttonNamesPesponse = await queryCategoryListUsingPost(); // 获取按钮名称列表
+        const fetchedButtonNames = buttonNamesPesponse?.data || [];
+        setButtonNames(initialButtonNames.concat(fetchedButtonNames));
+      } catch (error: any) {
+        // 请求失败时提示错误信息
+        message.error('请求失败，' + error.message);
+      }
+    }
     // 定义异步加载数据的函数
     const loadData = async (current = 1, pageSize = 5) => {
         // 开始加载数据，设置 loading 状态为 true
         console.log('正在加载数据');
         setLoading(true);
         try {
-        const buttonNamesPesponse = await queryCategoryListUsingPost(); // 获取按钮名称列表
-        const fetchedButtonNames = buttonNamesPesponse?.data || [];
-        setButtonNames(initialButtonNames.concat(fetchedButtonNames));
-
          // 调用接口获取数据
          const res = await queryArticlePageListUsingPost({
             current,
             pageSize,
             name: curTab === 0 ? '' : buttonNames[curTab],
         });
-        // 将请求返回的数据设置到列表数据状态中
-        setList(res?.data?.records ?? []);
-        // 将请求返回的总数设置到总数状态中
-        setTotal(res?.data?.total ?? 0);
+
+         // 将请求返回的数据设置到列表数据状态中
+         setList(res?.data?.records ?? []);
+         // 将请求返回的总数设置到总数状态中
+         setTotal(res?.data?.total ?? 0);
 
         // 捕获请求失败的错误信息
         } catch (error: any) {
-            // 请求失败时提示错误信息
-            message.error('请求失败，' + error.message);
+          // 请求失败时提示错误信息
+          message.error('请求失败，' + error.message);
         }
         // 数据加载成功或失败后，设置 loading 状态为 false
         setLoading(false);
@@ -48,6 +55,11 @@ const Blog: React.FC = () => {
 
         setCurTab(index);
     }
+
+    useEffect(() => {
+      // 当curTab发生变化时，才重新执行加载数据的函数
+      loadButtonData();
+    }, []);
 
     useEffect(() => {
         // 当curTab发生变化时，才重新执行加载数据的函数
@@ -64,7 +76,7 @@ const Blog: React.FC = () => {
     return (
         <div>
 
-            <Button type="primary" className="float-button" href='/blog/add' target='/blog/add' >写文章</Button>
+            {/*<Button type="primary" className="float-button" href='/blog/add' target='/blog/add' >写文章</Button>*/}
             <Card className="peripheral-tab" bordered={false} style={{ background: 'transparent' }}>
                 {/* 循环渲染按钮 */}
                 {buttonNames.map((buttonName, index) => (

@@ -122,6 +122,7 @@ const MyChartPage: React.FC = () => {
                   item.status === 'succeed' && <>
                     <div style={{ marginBottom: 16 }} />
                     <p>{'分析目标：' + item.goal}</p>
+                    <p>{'分析结论：' + item.genResult}</p>
                     <div style={{ marginBottom: 16 }} />
                     <ReactECharts option={item.genChart && JSON.parse(item.genChart)} />
                   </>
@@ -137,10 +138,11 @@ const MyChartPage: React.FC = () => {
                 }
 
               </>
-              <div style={{ marginBottom: 16 }} />
-                    <p>{'分析目标：' + item.goal}</p>
-                    <div style={{ marginBottom: 16 }} />
-                    <ReactECharts option={item.genChart && JSON.parse(item.genChart)} />
+              {/*<div style={{ marginBottom: 16 }} />*/}
+              {/*      <p>{'分析目标：' + item.goal}</p>*/}
+              {/*      <div style={{ marginBottom: 16 }} />*/}
+              {/*      <ReactECharts option={item.genChart && JSON.parse(item.genChart)} />*/}
+              {/*      <p>{'分析结论：' + item.genResult}</p>*/}
             </Card>
           </List.Item>
         )}

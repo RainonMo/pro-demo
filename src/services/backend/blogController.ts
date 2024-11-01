@@ -46,6 +46,21 @@ export async function getTArticleByIdUsingGet(
   });
 }
 
+/** listTArticleByPage POST /api/blog/tarticle/list/page */
+export async function listTArticleByPageUsingPost(
+  body: API.TArticleQueryRequest,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponsePageTArticle_>('/api/blog/tarticle/list/page', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** listMyPostVOByPage POST /api/blog/tarticle/my/list/page */
 export async function listMyPostVoByPageUsingPost(
   body: API.TArticleQueryRequest,
@@ -140,6 +155,21 @@ export async function getTCategoryByIdUsingGet(
 export async function queryCategoryListUsingPost(options?: { [key: string]: any }) {
   return request<API.BaseResponseListString_>('/api/blog/tcategory/list', {
     method: 'POST',
+    ...(options || {}),
+  });
+}
+
+/** listTCategoryByPage POST /api/blog/tcategory/list/page */
+export async function listTCategoryByPageUsingPost(
+  body: API.TCategoryQueryRequest,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponsePageTCategory_>('/api/blog/tcategory/list/page', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
     ...(options || {}),
   });
 }
